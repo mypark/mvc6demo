@@ -1,0 +1,150 @@
+FORMAT: 1A
+HOST: http://ttg-demo-web.azurewebsites.net/api/
+
+# Demo API
+
+This is a demo introduction
+
+## Quick Start
+
+Sample code here with instructions
+
+## Group Todos
+Todos is a way to manage tasks
+
+###Todos Collection [/todo]
+
+#### List All Todos [GET]
+Get a list of all todos for this user
+
++ Response 200 (application/json)
+
+        [
+            {
+                "Key": "bbaa019f-ac7f-4ccf-a40d-a5c31a4dd796",
+                "Name": "Item1",
+                "IsComplete": false
+            },
+            {
+                "Key": "abca019f-bc9f-3ccf-d40d-b7c31a4dd852",
+                "Name": "Item2",
+                "IsComplete": true
+            }
+        ]
+        
+#### Create a New Todo [POST]
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+    + Attributes (Todo)
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /todo/bbaa019f-ac7f-4ccf-a40d-a5c31a4dd796
+
+    + Body
+
+            {
+                "Key": "bbaa019f-ac7f-4ccf-a40d-a5c31a4dd796",
+                "Name": "Item1",
+                "IsComplete": false
+            }
+
+### Todo [/todo/{todoId}]
+
+#### Get a Todo by id [GET]
+Get a Todo by Id
++ Parameters
+    + todoId (string) - ID of the todo
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "Key": "bbaa019f-ac7f-4ccf-a40d-a5c31a4dd796",
+                "Name": "Item1",
+                "IsComplete": false
+            }
+
+### Data Structures
+#### Todo
++ name: description of todo (string, required)
++ isComplete: whether the todo is complete (boolean, required)
+
+## Group Questions
+
+### Questions Collection [/questions]
+
+#### List All Questions [GET]
+List all Questions
+
++ Response 200 (application/json)
+
+        {
+            "question": "Favourite programming language?",
+            "choices": [
+                {
+                    "choice": "Swift",
+                    "votes": 2048
+                }, {
+                    "choice": "Python",
+                    "votes": 1024
+                }
+            ]
+        }
+        
+#### Create a New Question [POST]
+You may create your own question using this action.
+This action takes a JSON payload as part of the request.
+Response then return specific header and body.
+
++ Request (application/json)
+
+        {
+            "question": "Favourite programming language?",
+            "choices": [
+                "Swift",
+                "Python",
+                "Objective-C",
+                "Ruby"
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/1
+
+    + Body
+
+            {
+                "question": "Favourite programming language?",
+                "published_at": "2014-11-11T08:40:51.620Z",
+                "url": "/questions/1",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "url": "/questions/1/choices/1",
+                        "votes": 0
+                    }, {
+                        "choice": "Python",
+                        "url": "/questions/1/choices/2",
+                        "votes": 0
+                    }, {
+                        "choice": "Objective-C",
+                        "url": "/questions/1/choices/3",
+                        "votes": 0
+                    }, {
+                        "choice": "Ruby",
+                        "url": "/questions/1/choices/4",
+                        "votes": 0
+                    }
+                ]
+            }
