@@ -37,7 +37,7 @@ namespace ttg_api.Controllers
             if (ModelState.IsValid)
             {
                 // Do something with the product (not shown).
-                return new ObjectResult(todo);
+                return CreatedAtRoute("GetTodo", new { controller = "Todo", id = todo.Key }, todo);
             }
             else
             {
