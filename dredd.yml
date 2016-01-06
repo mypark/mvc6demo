@@ -1,0 +1,23 @@
+dry-run: null
+hookfiles: hooks.js
+language: nodejs
+sandbox: false
+server: dnx web
+server-wait: 3
+init: false
+names: false
+only: []
+output: []
+header: []
+sorted: false
+user: null
+inline-errors: false
+details: false
+method: []
+color: true
+level: verbose
+timestamp: false
+silent: false
+path: []
+blueprint: test.apib
+endpoint: 'http://localhost:5000'

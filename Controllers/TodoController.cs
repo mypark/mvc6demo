@@ -5,6 +5,16 @@ using ttg_api.Models;
 
 namespace ttg_api.Controllers
 {  
+    
+    [Route("/message")]
+    public class HelloController : Controller
+    {
+        [HttpGet]
+        public ObjectResult Get()
+        {
+            return new ObjectResult(new {foo = "bar"});
+        }
+    }
     [Route("api/[controller]")]
     public class TodoController : Controller
     {
