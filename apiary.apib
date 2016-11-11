@@ -9,8 +9,38 @@ This is a demo introduction
 
 Sample code here with instructions
 
+## Auth (OAuth 2)
+
++ scopes
+    + user - A user scope, allowing you access to read the user information
+    + user.email - A user scope, allowing you access to read the user's email addresses
+
 ## Group Todos
 Todos is a way to manage tasks
+
++ Authenticated (Auth[user])
+
+<!--+ Authenticated (Basic)-->
+<!--    + username: kyle-->
+<!--    + password: b2952d03bda09cb5f63b0162fbbee77c-->
+
+
+<!--### Authorization [GET /authorize]-->
+
+<!--+ Relation: authorize-->
+<!--+ Request-->
+<!--    + Parameters-->
+<!--        + `response_type`: code (Response Type, required)-->
+<!--        + `client_id`: b58051708627fa6a5b7e49108f3c7574 (Client ID, required)-->
+<!--        + state (State)-->
+<!--        + scope (Scope)-->
+<!--        + `redirect_uri` (Redirect Callback, required)-->
+
+<!--+ Redirect-->
+<!--    + Parameters-->
+<!--        + code (Code)-->
+<!--        + state (State)-->
+
 
 ###Todos Collection [/todo]
 
@@ -38,7 +68,7 @@ object containing a question and a collection of answers in the
 form of choices.
 
 + Request (application/json)
-
+    Authorization : Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZHwxMzI0NTYiLCJleHAiOjEzOTI4MTc4ODQsImF1ZCI6InRvcGNvZGVyIiwiaWF0IjoxMzkyNzU3ODg0fQ.7X2IKkiyyI1ExSM5GNpdhJ8fGGK5-oAjzccX6YL_BKY
     + Attributes (Todo)
 
 + Response 201 (application/json)
@@ -74,8 +104,8 @@ Get a Todo by Id
 
 ### Data Structures
 #### Todo
-+ name: description of todo (string, required)
-+ isComplete: whether the todo is complete (boolean, required)
++ Name (required, string) ... description of todo
++ IsComplete (required, boolean) ... whether the todo is complete 
 
 ## Group Questions
 
@@ -87,7 +117,7 @@ List all Questions
 + Response 200 (application/json)
 
         {
-            "question": "Favourite programming language?",
+            "question": "Favorite programming language?",
             "choices": [
                 {
                     "choice": "Swift",
